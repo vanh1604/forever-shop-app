@@ -19,4 +19,18 @@ class ApiService {
       throw Exception('Failed to load products');
     }
   }
+
+  Future<Product> fetchProductById(String id) async {
+    final res = await http.post(Uri.parse('$baseUrl/api/product/list/$id'));
+    print(res);
+    if (res.statusCode == 200) {
+      if (res.body == 'null') {
+        return Future.error('Product not found');
+      }
+      final Map<String, dynamic> data = jsonDecode(res.body);
+      return Product.fromJson(data);
+    } else {
+      throw Exception('Failed to load product');
+    }
+  }
 }

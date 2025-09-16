@@ -9,3 +9,7 @@ final apiProvider = Provider((ref) {
 final productsListProvider = FutureProvider<List<Product>>((ref) async {
   return ref.watch(apiProvider).fetchData();
 });
+
+final productById = FutureProvider.family<Product, String>((ref, id) async {
+  return ref.watch(apiProvider).fetchProductById(id);
+});
