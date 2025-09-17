@@ -10,9 +10,11 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   bool rememberPassword = false;
+
   @override
   Widget build(BuildContext context) {
     final _formSignInKey = GlobalKey<FormState>();
+
     return LayoutWelcomeScreen(
       child: Column(
         children: [

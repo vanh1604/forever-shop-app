@@ -33,4 +33,17 @@ class ApiService {
       throw Exception('Failed to load product');
     }
   }
+
+  Future<dynamic> signIn(String email, String password) async {
+    final res = await http.post(
+      Uri.parse('$baseUrl/api/auth/login'),
+      body: {'email': email, 'password': password},
+    );
+    if (res.statusCode == 200) {
+      final Map<String, dynamic> data = jsonDecode(res.body);
+      return data;
+    } else {
+      throw Exception('Failed to login');
+    }
+  }
 }

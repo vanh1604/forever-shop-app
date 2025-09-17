@@ -22,9 +22,7 @@ class LayoutWelcomeScreen extends StatelessWidget {
             width: double.infinity,
           ),
           Container(
-            color: Colors.white.withOpacity(
-              0.3,
-            ), // Màu đen với độ trong suốt 40%
+            color: Colors.white.withOpacity(0.3),
             height: double.infinity,
             width: double.infinity,
           ),
