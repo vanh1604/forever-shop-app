@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:first_project/models/product.dart';
 import 'package:http/http.dart' as http;
 
@@ -44,8 +45,6 @@ class ApiService {
       headers: {'Content-Type': 'application/json; charset=UTF-8'},
       body: jsonEncode(bodyMap),
     );
-    print('Status Code: ${res.statusCode}');
-    print('Response Body: ${res.body}');
     if (res.statusCode == 200) {
       if (res.body == 'null') {
         return Future.error('User not found');
@@ -54,6 +53,35 @@ class ApiService {
       return data;
     } else {
       throw Exception('Failed to login. Server says: ${res.body}');
+    }
+  }
+
+  Future<dynamic> fetchCategories() async {
+    final res = await http.get(Uri.parse('$baseUrl/categories'));
+    if (res.statusCode == 200) {
+      if (res.body == 'null') {
+        return [];
+      }
+      final Map<String, dynamic> data = jsonDecode(res.body);
+      final List<dynamic> categories = data['data'];
+      return categories.map((category) => Category.fromJson(category)).toList();
+    } else {
+      throw Exception('Failed to load categories');
+    }
+  }
+
+  Future<dynamic> fetchSlider() async {
+    final res = await http.get(Uri.parse('$baseUrl/sliders'));
+    if (res.statusCode == 200) {
+      if (res.body == 'null') {
+        return;
+      }
+      print(res.body);
+      final Map<String, dynamic> data = jsonDecode(res.body);
+      final List<dynamic> sliders = data['data'];
+      return sliders;
+    } else {
+      throw Exception('Failed to load sliders');
     }
   }
 }

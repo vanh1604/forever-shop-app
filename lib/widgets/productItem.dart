@@ -19,16 +19,16 @@ class Productitem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Image.network(productItem.images![0], fit: BoxFit.cover),
+              child: Image.network(productItem.images[0], fit: BoxFit.cover),
             ),
             Padding(
               padding: const EdgeInsets.all(8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(productItem.name!),
+                  Text(productItem.name),
                   const SizedBox(height: 4),
-                  Text(productItem.price!),
+                  Text(productItem.price),
                 ],
               ),
             ),

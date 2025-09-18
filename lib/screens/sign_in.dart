@@ -27,7 +27,6 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
 
   @override
   void dispose() {
-    // Nhớ dispose controller để tránh rò rỉ bộ nhớ
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();

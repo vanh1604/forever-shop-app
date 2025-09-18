@@ -17,7 +17,7 @@ class ProductDetailScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(product.name!, style: const TextStyle(fontSize: 20)),
+                Text(product.name, style: const TextStyle(fontSize: 20)),
               ],
             ),
           ),
