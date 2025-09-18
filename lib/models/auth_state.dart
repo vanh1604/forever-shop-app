@@ -1,5 +1,4 @@
-// file: lib/models/auth_state.dart
-import 'package:first_project/models/user.dart'; // Giả sử bạn có model User
+import 'package:first_project/models/user.dart';
 
 abstract class AuthState {}
 
@@ -8,8 +7,8 @@ class AuthInitial extends AuthState {}
 class AuthLoading extends AuthState {}
 
 class Authenticated extends AuthState {
-  final User user;
-  Authenticated(this.user);
+  final String token;
+  Authenticated(this.token);
 }
 
 class AuthError extends AuthState {
